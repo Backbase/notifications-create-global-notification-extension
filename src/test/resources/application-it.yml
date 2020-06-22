@@ -1,0 +1,27 @@
+### test profile
+spring:
+  profiles: it
+  activemq:
+    in-memory: true
+    pooled: false
+    broker-url: vm://localhost:71717?broker.persistent=false
+  datasource:
+    url: jdbc:h2:mem:NOT;MODE=Mysql;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  jpa:
+    generate-ddl: false
+    properties:
+      hibernate.dialect: org.hibernate.dialect.H2Dialect
+      hibernate.generate_statistics: true
+      hibernate.format_sql: true
+      hibernate.show_sql: true
+  liquibase:
+    enabled: true
+    change-log: classpath:db/master.xml
+
+logging:
+  level:
+    com.netflix.discovery: OFF
+    com.backbase: DEBUG
+    ROOT: DEBUG
