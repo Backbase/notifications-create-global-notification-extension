@@ -39,7 +39,7 @@ import org.springframework.web.context.WebApplicationContext;
         Application.class
     })
 @DirtiesContext
-@ActiveProfiles("test")
+@ActiveProfiles("it")
 @TestPropertySource(properties =
     {
         "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration"
