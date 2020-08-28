@@ -42,6 +42,7 @@ import org.springframework.web.context.WebApplicationContext;
 @ActiveProfiles("it")
 @TestPropertySource(properties =
     {
+        "backbase.audit.enabled=false",
         "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration"
     })
 @TestExecutionListeners({
