@@ -5,12 +5,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 import com.backbase.dbs.notifications.rest.spec.v2.notifications.NotificationsPostRequestBody;
 import com.backbase.dbs.notifications.rest.spec.v2.notifications.SeverityLevel;
+import com.backbase.dbs.notifications.rest.spec.v2.notifications.TargetGroup;
 import com.backbase.dbs.presentation.services.notifications.Application;
 import com.backbase.dbs.presentation.services.notifications.util.ServiceJwtTokenProvider;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.springtestdbunit.DbUnitTestExecutionListener;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -86,11 +87,13 @@ public class ValidatorConfigTest {
     }
 
     private NotificationsPostRequestBody createNotificationsPostRequestBody() {
-        return new NotificationsPostRequestBody()
-            .withMessage("Message")
-            .withLevel(SeverityLevel.INFO)
-            .withTargetGroup(NotificationsPostRequestBody.TargetGroup.GLOBAL)
-            .withOrigin("actions");
+        NotificationsPostRequestBody notificationsPostRequestBody = new NotificationsPostRequestBody();
+        notificationsPostRequestBody.setMessage("Message");
+        notificationsPostRequestBody.setLevel(SeverityLevel.INFO);
+        notificationsPostRequestBody.setTargetGroup(TargetGroup.GLOBAL);
+        notificationsPostRequestBody.setOrigin("actions");
+
+        return notificationsPostRequestBody;
     }
 
 }
